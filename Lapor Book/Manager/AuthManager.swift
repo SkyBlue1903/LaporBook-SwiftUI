@@ -19,7 +19,8 @@ final class AuthManager {
     var fsData: [String: Any] = [
       "id": result.uid,
       "fullname": fullname,
-      "phone": phone
+      "phone": phone,
+      "role": "User"
     ]
     if let email = result.email {
       fsData["email"] = email
@@ -44,8 +45,9 @@ final class AuthManager {
     let email = data["email"] as? String
     let fullname = data["fullname"] as? String
     let phone = data["phone"] as? String
+    let role = data["role"] as? String
     
-    return FSUser(uid: id, email: email, fullname: fullname)
+    return FSUser(uid: id, email: email, fullname: fullname, phone: phone, role: role)
   }
   
   func logoutUser() throws {

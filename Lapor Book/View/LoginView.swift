@@ -26,7 +26,7 @@ struct LoginView: View {
       NavigationStack {
         ScrollView(.vertical, content: {
           VStack(alignment: .leading, spacing:10) {
-            Text("Login to your existing account")
+            Text("Masuk ke akun Anda")
               .font(.subheadline)
               .foregroundStyle(.gray)
               .padding(.bottom, 30)
@@ -46,10 +46,10 @@ struct LoginView: View {
                 }
               }
             }, label: {
-              CustomButtonView(name: "Login")
+              CustomButtonView(name: "Masuk")
             })
             NavigationLink(destination: RegisterView()) {
-              Text("Don't have an account? **Register**")
+              Text("Tidak memiliki akun? **Daftar**")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top)
             }
@@ -60,7 +60,7 @@ struct LoginView: View {
         .alert(isPresented: $isAlert) {
           Alert(title: Text("Error"), message: Text(viewModel.error), dismissButton: .default(Text("OK")))
         }
-        .navigationTitle("Login")
+        .navigationTitle("Masuk")
       }
     }
 }

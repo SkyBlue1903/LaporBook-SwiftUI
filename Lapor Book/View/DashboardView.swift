@@ -7,19 +7,38 @@
 
 import SwiftUI
 
+@MainActor
+final class DashboardViewModel: ObservableObject {
+  @Published var fullname: String = ""
+  @Published var email: String = ""
+  @Published var phone: String = ""
+  @Published var role: String = ""
+  
+  func fetchData() async throws {
+    let auth = try AuthManager.instance.getAuthUser()
+    let result = try await AuthManager.instance.getFSUser(user: auth)
+    self.email = result.email ?? "Loading..."
+    self.fullname = result.fullname ?? "Loading..."
+    self.phone = result.phone ?? ""
+    self.role = result.role ?? ""
+  }
+}
+
 struct DashboardView: View {
   @EnvironmentObject private var router: Router
+  @StateObject private var viewModel = DashboardViewModel()
+  
     var body: some View {
       NavigationStack {
         ScrollView(.vertical) {
           VStack(alignment: .leading) {
-            Text("Erlangga")
+            Text("\(viewModel.fullname)")
               .font(.title)
-            Text("Admin")
+            Text("\(viewModel.role)")
               .font(.headline)
             Divider()
-            Text(verbatim: "angga1433@gmail.com")
-            Text("081234563505")
+            Text(verbatim: "\(viewModel.email)")
+            Text("\(viewModel.phone)")
             Button(action: {
               Task {
                 do {
@@ -36,6 +55,13 @@ struct DashboardView: View {
           .frame(maxWidth: .infinity, alignment: .leading)
           .padding(.horizontal)
         }
+        .onAppear(perform: {
+          Task {
+            do {
+              try await viewModel.fetchData()
+            }
+          }
+        })
         .navigationTitle("Profile")
       }
     }

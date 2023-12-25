@@ -12,6 +12,7 @@ import Firebase
 struct Lapor_BookApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
   @StateObject var router = Router()
+  
   var body: some Scene {
     WindowGroup {
       ViewController()

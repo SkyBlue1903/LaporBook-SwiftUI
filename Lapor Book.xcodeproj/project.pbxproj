@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA43DD552B37B4C80079E9F2 /* ReportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */; };
+		BA43DD572B37CC030079E9F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DD562B37CC030079E9F2 /* ImagePicker.swift */; };
 		BA7D8CC82B35CD630044A162 /* Lapor_BookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */; };
 		BA7D8CCA2B35CD630044A162 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8CC92B35CD630044A162 /* ViewController.swift */; };
 		BA7D8CCC2B35CD640044A162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D8CCB2B35CD640044A162 /* Assets.xcassets */; };
@@ -49,9 +51,14 @@
 		BAB2DA9C2B36B886000BD0F4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */; };
 		BAB2DA9E2B36CD7E000BD0F4 /* MyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */; };
 		BAB2DAA02B36D807000BD0F4 /* AddReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */; };
+		BABDC8F62B381DD500112C93 /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABDC8F52B381DD500112C93 /* ReportManager.swift */; };
+		BABDC8F82B3839B600112C93 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABDC8F72B3839B600112C93 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCardView.swift; sourceTree = "<group>"; };
+		BA43DD562B37CC030079E9F2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BA43DD5A2B37CD4A0079E9F2 /* Lapor-Book-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Lapor-Book-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BA7D8CC42B35CD630044A162 /* Lapor Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lapor Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lapor_BookApp.swift; sourceTree = "<group>"; };
 		BA7D8CC92B35CD630044A162 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +75,8 @@
 		BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportView.swift; sourceTree = "<group>"; };
 		BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportView.swift; sourceTree = "<group>"; };
+		BABDC8F52B381DD500112C93 /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
+		BABDC8F72B3839B600112C93 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +136,7 @@
 		BA7D8CC62B35CD630044A162 /* Lapor Book */ = {
 			isa = PBXGroup;
 			children = (
+				BA43DD5A2B37CD4A0079E9F2 /* Lapor-Book-Info.plist */,
 				BA7D8CCB2B35CD640044A162 /* Assets.xcassets */,
 				BA7D8CD52B35CED00044A162 /* GoogleService-Info.plist */,
 				BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */,
@@ -154,6 +164,7 @@
 				BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */,
 				BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */,
 				BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */,
+				BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +172,7 @@
 		BAB2DA972B36753B000BD0F4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BA43DD562B37CC030079E9F2 /* ImagePicker.swift */,
 				BA7D8CC92B35CD630044A162 /* ViewController.swift */,
 				BA7D8D102B35DE690044A162 /* Extensions.swift */,
 				BA7D8D122B35DFC50044A162 /* Templates.swift */,
@@ -174,6 +186,8 @@
 			children = (
 				BAB2DA942B367518000BD0F4 /* AuthManager.swift */,
 				BAB2DA992B367628000BD0F4 /* Model.swift */,
+				BABDC8F52B381DD500112C93 /* ReportManager.swift */,
+				BABDC8F72B3839B600112C93 /* StorageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -281,15 +295,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BABDC8F82B3839B600112C93 /* StorageManager.swift in Sources */,
 				BAB2DA9A2B367628000BD0F4 /* Model.swift in Sources */,
 				BA7D8D0F2B35DA630044A162 /* RegisterView.swift in Sources */,
 				BAB2DA952B367518000BD0F4 /* AuthManager.swift in Sources */,
 				BAB2DA932B367269000BD0F4 /* LoginView.swift in Sources */,
+				BA43DD552B37B4C80079E9F2 /* ReportCardView.swift in Sources */,
+				BABDC8F62B381DD500112C93 /* ReportManager.swift in Sources */,
 				BA7D8CCA2B35CD630044A162 /* ViewController.swift in Sources */,
 				BAB2DA9E2B36CD7E000BD0F4 /* MyReportView.swift in Sources */,
 				BAB2DAA02B36D807000BD0F4 /* AddReportView.swift in Sources */,
 				BA7D8CC82B35CD630044A162 /* Lapor_BookApp.swift in Sources */,
 				BA7D8D132B35DFC50044A162 /* Templates.swift in Sources */,
+				BA43DD572B37CC030079E9F2 /* ImagePicker.swift in Sources */,
 				BAB2DA9C2B36B886000BD0F4 /* DashboardView.swift in Sources */,
 				BA7D8D112B35DE690044A162 /* Extensions.swift in Sources */,
 				BAB2DA8F2B35E12A000BD0F4 /* Constants.swift in Sources */,
@@ -351,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -408,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -429,6 +447,7 @@
 				DEVELOPMENT_TEAM = 2W8TC22856;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lapor-Book-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lapor Book";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -459,6 +478,7 @@
 				DEVELOPMENT_TEAM = 2W8TC22856;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lapor-Book-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lapor Book";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

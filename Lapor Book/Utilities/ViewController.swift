@@ -46,7 +46,7 @@ struct ViewController: View {
           .tabItem {
             Label("Semua Laporan", systemImage: "circle.grid.2x2.fill")
           }
-        Text("Coming soon... (2)")
+        MyReportView()
           .tabItem {
             Label("Laporan Saya", systemImage: "book.fill")
           }
