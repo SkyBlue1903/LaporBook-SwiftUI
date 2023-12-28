@@ -41,4 +41,8 @@ struct ReportModel: Hashable, Codable {
   let instance: String?
   let title: String?
   let userId: String?
+  let lat: Double?
+  let long: Double?
+  let fullname: String?
+  let status: String?
 }

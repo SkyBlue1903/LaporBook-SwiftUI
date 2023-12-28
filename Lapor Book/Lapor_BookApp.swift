@@ -15,6 +15,7 @@ struct Lapor_BookApp: App {
   
   var body: some Scene {
     WindowGroup {
+//      LatihanView()   
       ViewController()
         .environmentObject(router)
     }

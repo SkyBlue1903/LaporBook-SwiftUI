@@ -12,8 +12,9 @@ final class ReportManager {
   static let instance = ReportManager()
   private init() { }
   
-  func createReport(title: String, location: String = "-", instance: String, desc: String, path: String, filename: String) async throws {
+  func createReport(title: String, location: String = "-", instance: String, desc: String, path: String, filename: String, lat: Double, long: Double) async throws {
     let user = try AuthManager.instance.getAuthUser()
+    let fsUser = try await AuthManager.instance.getFSUser(user: user)
     let autoID = Firestore.firestore().collection("report").document().documentID
     let data : [String: Any] = [
       "date": Timestamp(),
@@ -24,7 +25,10 @@ final class ReportManager {
       "instance": instance,
       "imagePath": path,
       "imageFilename": filename,
-      "status": "Posted"
+      "status": "Posted",
+      "latitude": lat,
+      "longitude": long,
+      "fullname": fsUser.fullname ?? ""
     ]
     try await Firestore.firestore().collection("report").document(autoID).setData(data, merge: true)
   }
@@ -42,7 +46,11 @@ final class ReportManager {
       let instance = report["instance"] as? String
       let title = report["reportTitle"] as? String
       let uid = report["userId"] as? String
-      tempArray.append(ReportModel(date: date, id: id, desc: desc, imgFilename: imgFile, imgPath: imgPath, instance: instance, title: title, userId: uid))
+      let lat = report["latitude"] as? Double
+      let long = report["longitude"] as? Double
+      let fullname = report["fullname"] as? String
+      let status = report["status"] as? String
+      tempArray.append(ReportModel(date: date, id: id, desc: desc, imgFilename: imgFile, imgPath: imgPath, instance: instance, title: title, userId: uid, lat: lat, long: long, fullname: fullname, status: status))
     }
     return tempArray
   }

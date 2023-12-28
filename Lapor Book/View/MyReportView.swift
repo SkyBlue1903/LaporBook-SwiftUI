@@ -23,38 +23,49 @@ struct MyReportView: View {
   
   let columnSize: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 10), count: 2)
   var body: some View {
-    NavigationStack {
+    if addReportSheet {
+      Task {
+        do {
+          try await viewModel.loadReports()
+        }
+      }
+    }
+    return AnyView(
+      NavigationStack {
         ScrollView(.vertical){
           LazyVGrid(columns: columnSize) {
             ForEach(viewModel.data, id: \.self) { each in
-              ReportCard2View(data: each)
+              NavigationLink(destination: ReportDetailView(data: each)) {
+                ReportCard2View(data: each)
+              }
             }
           }
           .padding(.horizontal)
         }
-      .toolbar(content: {
-        ToolbarItem(placement: .topBarTrailing) {
-          Button(action: {
-            self.addReportSheet.toggle()
-          }) {
-            Image(systemName: "plus")
+        .toolbar(content: {
+          ToolbarItem(placement: .topBarTrailing) {
+            Button(action: {
+              self.addReportSheet.toggle()
+            }) {
+              Image(systemName: "plus")
+            }
           }
-        }
-      })
-      .sheet(isPresented: $addReportSheet, content: {
-        AddReportView(isPresented: $addReportSheet)
-      })
-      .onAppear(perform: {
-        Task {
-          do {
-            try await viewModel.loadReports()
-          } catch {
-            print("Error fetching all data when view appear:", error.localizedDescription)
+        })
+        .sheet(isPresented: $addReportSheet, content: {
+          AddReportView(isPresented: $addReportSheet)
+        })
+        .onAppear(perform: {
+          Task {
+            do {
+              try await viewModel.loadReports()
+            } catch {
+              print("Error fetching all data when view appear:", error.localizedDescription)
+            }
           }
-        }
-      })
-      .navigationTitle("Laporan Saya")
-    }
+        })
+        .navigationTitle("Laporan Saya")
+      }
+    )
   }
 }
 

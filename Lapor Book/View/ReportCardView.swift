@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ReportCard1View: View {
   @Environment(\.colorScheme) var colorScheme
@@ -53,18 +54,39 @@ struct ReportCard2View: View {
     ZStack {
       Color(hex: colorScheme == .light ? LB.AppColors.cardBgLight : LB.AppColors.cardBgDark)
       VStack(alignment: .leading, spacing: 0) {
-        AsyncImage(url: URL(string: data?.imgPath ?? ""), content: { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(height: UIScreen.main.bounds.height * 0.2)
-            .clipped()
-        }, placeholder: {
-          ProgressView()
-            .font(.title)
-            .frame(height: UIScreen.main.bounds.height * 0.2)
-            .frame(maxWidth: .infinity)
-        })
+//        AsyncImage(url: URL(string: data?.imgPath ?? ""), content: { image in
+//          image
+//            .resizable()
+//            .aspectRatio(contentMode: .fill)
+//            .frame(height: UIScreen.main.bounds.height * 0.2)
+//            .clipped()
+//        }, placeholder: {
+//          ProgressView()
+//            .font(.title)
+//            .frame(height: UIScreen.main.bounds.height * 0.2)
+//            .frame(maxWidth: .infinity)
+//        })
+        WebImage(url: URL(string: data?.imgPath ?? ""))
+          .resizable()
+          .placeholder(content: {
+            ProgressView()
+              .font(.title)
+              .aspectRatio(contentMode: .fill)
+              .frame(height: UIScreen.main.bounds.height * 0.2)
+              .frame(maxWidth: .infinity)
+              .clipped()
+          })
+          .onFailure(perform: { _ in
+            VStack(spacing: 16) {
+              Image(systemName: "wifi.slash")
+                .font(.largeTitle)
+              Text("Gagal mengunduh")
+            }
+          })
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(height: UIScreen.main.bounds.height * 0.2)
+          .clipped()
         VStack(alignment: .leading, spacing: 0) {
           Text("\(formatDate(data?.date ?? Date()))")
             .font(.system(size: 12, weight: .regular, design: .default))
@@ -74,10 +96,11 @@ struct ReportCard2View: View {
           //          .frame(height: UIScreen.main.bounds.height * 0.075)
           
           Text("\(data?.title ?? "Loading...")")
+            .foregroundStyle(colorScheme == .light ? .black : .white)
             .lineLimit(2)
             .font(.headline)
           Spacer()
-          Text("Diproses")
+          Text(data?.status ?? "")
             .font(.system(size: 14, weight: .bold, design: .default))
             .foregroundStyle(.accent)
           

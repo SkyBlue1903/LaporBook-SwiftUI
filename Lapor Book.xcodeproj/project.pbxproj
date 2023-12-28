@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BA43DD552B37B4C80079E9F2 /* ReportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */; };
 		BA43DD572B37CC030079E9F2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43DD562B37CC030079E9F2 /* ImagePicker.swift */; };
+		BA558A3F2B3B2A0500912184 /* ReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA558A3E2B3B2A0500912184 /* ReportDetailView.swift */; };
+		BA6796CD2B3C445D00BC921F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BA6796CC2B3C445D00BC921F /* SDWebImageSwiftUI */; };
 		BA7D8CC82B35CD630044A162 /* Lapor_BookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */; };
 		BA7D8CCA2B35CD630044A162 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8CC92B35CD630044A162 /* ViewController.swift */; };
 		BA7D8CCC2B35CD640044A162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D8CCB2B35CD640044A162 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		BA7D8D0F2B35DA630044A162 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8D0E2B35DA630044A162 /* RegisterView.swift */; };
 		BA7D8D112B35DE690044A162 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8D102B35DE690044A162 /* Extensions.swift */; };
 		BA7D8D132B35DFC50044A162 /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D8D122B35DFC50044A162 /* Templates.swift */; };
+		BAA572ED2B392AB70002CB54 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA572EC2B392AB70002CB54 /* LocationManager.swift */; };
+		BAA572EF2B393D620002CB54 /* MapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA572EE2B393D620002CB54 /* MapKitView.swift */; };
 		BAB2DA8F2B35E12A000BD0F4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA8E2B35E12A000BD0F4 /* Constants.swift */; };
 		BAB2DA932B367269000BD0F4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA922B367269000BD0F4 /* LoginView.swift */; };
 		BAB2DA952B367518000BD0F4 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA942B367518000BD0F4 /* AuthManager.swift */; };
@@ -59,6 +63,7 @@
 		BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCardView.swift; sourceTree = "<group>"; };
 		BA43DD562B37CC030079E9F2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		BA43DD5A2B37CD4A0079E9F2 /* Lapor-Book-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Lapor-Book-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BA558A3E2B3B2A0500912184 /* ReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailView.swift; sourceTree = "<group>"; };
 		BA7D8CC42B35CD630044A162 /* Lapor Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lapor Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lapor_BookApp.swift; sourceTree = "<group>"; };
 		BA7D8CC92B35CD630044A162 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +73,8 @@
 		BA7D8D0E2B35DA630044A162 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		BA7D8D102B35DE690044A162 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BA7D8D122B35DFC50044A162 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
+		BAA572EC2B392AB70002CB54 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BAA572EE2B393D620002CB54 /* MapKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitView.swift; sourceTree = "<group>"; };
 		BAB2DA8E2B35E12A000BD0F4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAB2DA922B367269000BD0F4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BAB2DA942B367518000BD0F4 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -84,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA6796CD2B3C445D00BC921F /* SDWebImageSwiftUI in Frameworks */,
 				BA7D8CEB2B35CF4D0044A162 /* FirebaseDatabase in Frameworks */,
 				BA7D8CF92B35CF4D0044A162 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				BA7D8CF12B35CF4D0044A162 /* FirebaseFirestore in Frameworks */,
@@ -136,10 +144,10 @@
 		BA7D8CC62B35CD630044A162 /* Lapor Book */ = {
 			isa = PBXGroup;
 			children = (
-				BA43DD5A2B37CD4A0079E9F2 /* Lapor-Book-Info.plist */,
 				BA7D8CCB2B35CD640044A162 /* Assets.xcassets */,
 				BA7D8CD52B35CED00044A162 /* GoogleService-Info.plist */,
 				BA7D8CC72B35CD630044A162 /* Lapor_BookApp.swift */,
+				BA43DD5A2B37CD4A0079E9F2 /* Lapor-Book-Info.plist */,
 				BAB2DA982B367561000BD0F4 /* Manager */,
 				BA7D8CCD2B35CD640044A162 /* Preview Content */,
 				BAB2DA972B36753B000BD0F4 /* Utilities */,
@@ -159,12 +167,14 @@
 		BAB2DA962B367521000BD0F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BAA572EE2B393D620002CB54 /* MapKitView.swift */,
 				BA7D8D0E2B35DA630044A162 /* RegisterView.swift */,
 				BAB2DA922B367269000BD0F4 /* LoginView.swift */,
 				BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */,
 				BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */,
 				BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */,
 				BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */,
+				BA558A3E2B3B2A0500912184 /* ReportDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 				BAB2DA992B367628000BD0F4 /* Model.swift */,
 				BABDC8F52B381DD500112C93 /* ReportManager.swift */,
 				BABDC8F72B3839B600112C93 /* StorageManager.swift */,
+				BAA572EC2B392AB70002CB54 /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -236,6 +247,7 @@
 				BA7D8D082B35CF4D0044A162 /* FirebaseRemoteConfigSwift */,
 				BA7D8D0A2B35CF4D0044A162 /* FirebaseStorage */,
 				BA7D8D0C2B35CF4D0044A162 /* FirebaseStorageCombine-Community */,
+				BA6796CC2B3C445D00BC921F /* SDWebImageSwiftUI */,
 			);
 			productName = "Lapor Book";
 			productReference = BA7D8CC42B35CD630044A162 /* Lapor Book.app */;
@@ -267,6 +279,7 @@
 			mainGroup = BA7D8CBB2B35CD630044A162;
 			packageReferences = (
 				BA7D8CD72B35CF4D0044A162 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BA6796CB2B3C445D00BC921F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = BA7D8CC52B35CD630044A162 /* Products */;
 			projectDirPath = "";
@@ -296,8 +309,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BABDC8F82B3839B600112C93 /* StorageManager.swift in Sources */,
+				BAA572ED2B392AB70002CB54 /* LocationManager.swift in Sources */,
 				BAB2DA9A2B367628000BD0F4 /* Model.swift in Sources */,
 				BA7D8D0F2B35DA630044A162 /* RegisterView.swift in Sources */,
+				BA558A3F2B3B2A0500912184 /* ReportDetailView.swift in Sources */,
+				BAA572EF2B393D620002CB54 /* MapKitView.swift in Sources */,
 				BAB2DA952B367518000BD0F4 /* AuthManager.swift in Sources */,
 				BAB2DA932B367269000BD0F4 /* LoginView.swift in Sources */,
 				BA43DD552B37B4C80079E9F2 /* ReportCardView.swift in Sources */,
@@ -522,6 +538,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA6796CB2B3C445D00BC921F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
 		BA7D8CD72B35CF4D0044A162 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -533,6 +557,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA6796CC2B3C445D00BC921F /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA6796CB2B3C445D00BC921F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		BA7D8CD82B35CF4D0044A162 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7D8CD72B35CF4D0044A162 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

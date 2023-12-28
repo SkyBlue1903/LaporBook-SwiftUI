@@ -83,11 +83,13 @@ struct CustomTextFieldView: View {
 // MARK: - Custom Button
 struct CustomButtonView: View {
   var name: String
+  var isDisabled: Bool = false
+  
   var body: some View {
     Text(name)
       .padding()
       .frame(maxWidth: .infinity)
-      .background(.accent)
+      .background(isDisabled ? .accent.opacity(0.5) :  .accent)
       .foregroundStyle(.white)
       .fontWeight(.black)
       .clipShape(RoundedRectangle(cornerSize: CGSize(width: 50, height: 50)))
@@ -95,10 +97,48 @@ struct CustomButtonView: View {
   }
 }
 
+// MARK: - Custom Report Detail Label
+struct ReportDetailLabelView: View {
+  var data: String?
+  var title: String
+  var imageSystemName: String
+  
+  var body: some View {
+    HStack {
+      Image(systemName: "\(imageSystemName)")
+        .foregroundStyle(.accent)
+        .font(.title2)
+        .frame(width: 20)
+      VStack(alignment: .leading) {
+        Text(verbatim: title)
+          .font(.system(size: 12))
+          .foregroundStyle(.gray)
+        Text(data ?? "")
+      }
+    }
+  }
+}
+
 #Preview {
-  CustomButtonView(name: "Daftar")
+  CustomButtonView(name: "Daftar", isDisabled: true)
+    .previewLayout(.fixed(width: .infinity, height: 60))
+    .previewDisplayName("Button")
 }
 
 #Preview {
   CustomTextFieldView(fieldBinding: .constant(""), fieldName: "Nama", isPassword: false)
+}
+
+#Preview {
+  ReportDetailLabelView(data: "Sampel", title: "Judul nya", imageSystemName: "person.fill")
+}
+
+struct ContohView: View {
+  var body: some View {
+    Text("hello")
+  }
+}
+
+#Preview {
+  ContohView()
 }
