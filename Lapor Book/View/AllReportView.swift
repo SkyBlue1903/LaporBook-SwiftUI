@@ -2,22 +2,21 @@
 //  MyReportView.swift
 //  Lapor Book
 //
-//  Created by Erlangga Anugrah Arifin on 23/12/23.
+//  Created by Erlangga Anugrah Arifin on 29/12/23.
 //
 
 import SwiftUI
 
 @MainActor
-final class MyReportViewModel: ObservableObject {
+final class AllReportViewModel: ObservableObject {
   @Published var data: [ReportModel] = []
-  @Published var userId: String = ""
   
   func loadReports() async throws {
-    self.data = try await ReportManager.instance.loadAllReports(byId: self.userId)
+    self.data = try await ReportManager.instance.loadAllReports()
   }
 }
 
-struct MyReportView: View {
+struct AllReportView: View {
   @Environment(\.colorScheme) var colorScheme
   @State private var addReportSheet: Bool = false
   @StateObject private var viewModel = MyReportViewModel()
@@ -58,19 +57,18 @@ struct MyReportView: View {
         .onAppear(perform: {
           Task {
             do {
-              viewModel.userId = try AuthManager.instance.getAuthUser().uid
               try await viewModel.loadReports()
             } catch {
               print("Error fetching all data when view appear:", error.localizedDescription)
             }
           }
         })
-        .navigationTitle("Laporan Saya")
+        .navigationTitle("Semua Laporan")
       }
     )
   }
 }
 
 #Preview {
-  MyReportView()
+  AllReportView()
 }

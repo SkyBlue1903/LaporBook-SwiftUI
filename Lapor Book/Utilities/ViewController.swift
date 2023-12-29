@@ -42,7 +42,7 @@ struct ViewController: View {
       .padding()
     case .dashboard:
       TabView {
-        Text("Coming soon...")
+        AllReportView()
           .tabItem {
             Label("Semua Laporan", systemImage: "circle.grid.2x2.fill")
           }

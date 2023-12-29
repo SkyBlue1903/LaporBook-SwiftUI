@@ -33,9 +33,11 @@ final class ReportManager {
     try await Firestore.firestore().collection("report").document(autoID).setData(data, merge: true)
   }
   
-  func loadAllReports() async throws -> [ReportModel] {
+  func loadAllReports(byId: String = "") async throws -> [ReportModel] {
     var tempArray = [ReportModel]()
-    let qs = try await Firestore.firestore().collection("report").getDocuments()
+    let allQuery = try await Firestore.firestore().collection("report").getDocuments()
+    let specificQuery = try await Firestore.firestore().collection("report").whereField("userId", isEqualTo: byId).getDocuments()
+    let qs = byId == "" ? allQuery : specificQuery
     for report in qs.documents {
       let timestamp = report["date"] as? Timestamp
       let date = timestamp?.dateValue() as? Date
@@ -53,5 +55,9 @@ final class ReportManager {
       tempArray.append(ReportModel(date: date, id: id, desc: desc, imgFilename: imgFile, imgPath: imgPath, instance: instance, title: title, userId: uid, lat: lat, long: long, fullname: fullname, status: status))
     }
     return tempArray
+  }
+  
+  func changeStatus(to newStatus: String, id: String) async throws {
+    try await Firestore.firestore().collection("report").document(id).setData(["status": newStatus], merge: true)
   }
 }

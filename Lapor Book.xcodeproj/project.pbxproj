@@ -53,10 +53,11 @@
 		BAB2DA952B367518000BD0F4 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA942B367518000BD0F4 /* AuthManager.swift */; };
 		BAB2DA9A2B367628000BD0F4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA992B367628000BD0F4 /* Model.swift */; };
 		BAB2DA9C2B36B886000BD0F4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */; };
-		BAB2DA9E2B36CD7E000BD0F4 /* MyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */; };
+		BAB2DA9E2B36CD7E000BD0F4 /* AllReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9D2B36CD7E000BD0F4 /* AllReportView.swift */; };
 		BAB2DAA02B36D807000BD0F4 /* AddReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */; };
 		BABDC8F62B381DD500112C93 /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABDC8F52B381DD500112C93 /* ReportManager.swift */; };
 		BABDC8F82B3839B600112C93 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABDC8F72B3839B600112C93 /* StorageManager.swift */; };
+		BAFACBD42B3F209700231B53 /* MyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFACBD32B3F209700231B53 /* MyReportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,10 +81,11 @@
 		BAB2DA942B367518000BD0F4 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		BAB2DA992B367628000BD0F4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportView.swift; sourceTree = "<group>"; };
+		BAB2DA9D2B36CD7E000BD0F4 /* AllReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReportView.swift; sourceTree = "<group>"; };
 		BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReportView.swift; sourceTree = "<group>"; };
 		BABDC8F52B381DD500112C93 /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
 		BABDC8F72B3839B600112C93 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BAFACBD32B3F209700231B53 /* MyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,10 +173,11 @@
 				BA7D8D0E2B35DA630044A162 /* RegisterView.swift */,
 				BAB2DA922B367269000BD0F4 /* LoginView.swift */,
 				BAB2DA9B2B36B886000BD0F4 /* DashboardView.swift */,
-				BAB2DA9D2B36CD7E000BD0F4 /* MyReportView.swift */,
+				BAB2DA9D2B36CD7E000BD0F4 /* AllReportView.swift */,
 				BAB2DA9F2B36D807000BD0F4 /* AddReportView.swift */,
 				BA43DD542B37B4C80079E9F2 /* ReportCardView.swift */,
 				BA558A3E2B3B2A0500912184 /* ReportDetailView.swift */,
+				BAFACBD32B3F209700231B53 /* MyReportView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,12 +317,13 @@
 				BA7D8D0F2B35DA630044A162 /* RegisterView.swift in Sources */,
 				BA558A3F2B3B2A0500912184 /* ReportDetailView.swift in Sources */,
 				BAA572EF2B393D620002CB54 /* MapKitView.swift in Sources */,
+				BAFACBD42B3F209700231B53 /* MyReportView.swift in Sources */,
 				BAB2DA952B367518000BD0F4 /* AuthManager.swift in Sources */,
 				BAB2DA932B367269000BD0F4 /* LoginView.swift in Sources */,
 				BA43DD552B37B4C80079E9F2 /* ReportCardView.swift in Sources */,
 				BABDC8F62B381DD500112C93 /* ReportManager.swift in Sources */,
 				BA7D8CCA2B35CD630044A162 /* ViewController.swift in Sources */,
-				BAB2DA9E2B36CD7E000BD0F4 /* MyReportView.swift in Sources */,
+				BAB2DA9E2B36CD7E000BD0F4 /* AllReportView.swift in Sources */,
 				BAB2DAA02B36D807000BD0F4 /* AddReportView.swift in Sources */,
 				BA7D8CC82B35CD630044A162 /* Lapor_BookApp.swift in Sources */,
 				BA7D8D132B35DFC50044A162 /* Templates.swift in Sources */,
