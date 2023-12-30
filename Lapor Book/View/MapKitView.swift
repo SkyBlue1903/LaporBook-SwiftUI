@@ -2,7 +2,7 @@ import SwiftUI
 import MapKit
 
 struct MapKitView: View {
-  @State private var showTitle = true
+  @State private var openInDialog: Bool = false
   var coordinatePoint: CLLocationCoordinate2D
   @Binding var region: MKCoordinateRegion
   let annotations = [CurrentUsersAnnotation()]
@@ -11,6 +11,21 @@ struct MapKitView: View {
     GeometryReader(content: { geo in
       Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: self.annotations) { _ in
         MapPin(coordinate: coordinatePoint, tint: .red)
+      }
+    })
+    .toolbar(content: {
+      ToolbarItem(placement: .topBarTrailing) {
+        Button("", systemImage: "square.and.arrow.up", role: .none) {
+          self.openInDialog.toggle()
+        }
+        .confirmationDialog("Pilih aplikasi untuk menuju lokasi tersebut", isPresented: $openInDialog, titleVisibility: .visible) {
+          Button("Google Maps") {
+            UIApplication.shared.open(URL(string: "comgooglemaps://?q=\(coordinatePoint.latitude),\(coordinatePoint.longitude)")!)
+          }
+          Button("Apple Maps") {
+            UIApplication.shared.open(URL(string: "https://maps.apple.com/?q=\(coordinatePoint.latitude), \(coordinatePoint.longitude)")!)
+          }
+        }
       }
     })
     .navigationTitle("Lokasi Laporan")
