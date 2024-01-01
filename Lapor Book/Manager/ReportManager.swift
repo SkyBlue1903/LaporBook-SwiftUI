@@ -57,7 +57,40 @@ final class ReportManager {
     return tempArray
   }
   
-  func changeStatus(to newStatus: String, id: String) async throws {
-    try await Firestore.firestore().collection("report").document(id).setData(["status": newStatus], merge: true)
+  func changeStatus(to newStatus: String, reportId: String) async throws {
+    try await Firestore.firestore().collection("report").document(reportId).setData(["status": newStatus], merge: true)
+  }
+  
+  func deleteReport(reportId: String) async throws {
+    try await Firestore.firestore().collection("report").document(reportId).delete()
+  }
+  
+  func loadAllComments(reportId: String) async throws -> [CommentModel] {
+    var tempArray = [CommentModel]()
+    let temp = try await Firestore.firestore().collection("report").document(reportId).collection("comments").getDocuments()
+    for comment in temp.documents {
+      let timestamp = comment["date"] as? Timestamp
+      let date = timestamp?.dateValue() as? Date
+      let id = comment["id"] as? String
+      let author = comment["author"] as? String
+      let content = comment["content"] as? String
+      tempArray.append(CommentModel(date: date, content: content, author: author, id: id))
+    }
+    return tempArray
+  }
+  
+  func createComment(reportId: String, content: String, author: String) async throws {
+    let autoID = Firestore.firestore().collection("report").document(reportId).collection("comments").document().documentID
+    let data: [String: Any] = [
+      "content": content,
+      "date": Timestamp(),
+      "author": author,
+      "id": autoID
+    ]
+    try await Firestore.firestore().collection("report").document(reportId).collection("comments").document(autoID).setData(data, merge: false)
+  }
+  
+  func deleteComment(reportId: String, commentId: String) async throws {
+    try await Firestore.firestore().collection("report").document(reportId).collection("comments").document(commentId).delete()
   }
 }

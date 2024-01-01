@@ -46,3 +46,10 @@ struct ReportModel: Hashable, Codable {
   let fullname: String?
   let status: String?
 }
+
+struct CommentModel: Hashable, Codable {
+  let date: Date?
+  let content: String?
+  let author: String?
+  let id: String?
+}

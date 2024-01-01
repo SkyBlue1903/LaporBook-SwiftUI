@@ -45,3 +45,24 @@ extension MKCoordinateRegion {
     return Measurement(value: metersInLatitude, unit: UnitLength.meters)
   }
 }
+
+// MARK: - Extension of Date
+extension Date {
+  func toStringAgo() -> String {
+    let calendar = Calendar.current
+    let now = Date()
+    
+    if now.timeIntervalSince(self) < 60 {
+      return "Baru saja"
+    } else if now.timeIntervalSince(self) < 60 * 60 {
+      let minutesAgo = Int(now.timeIntervalSince(self) / 60)
+      return "\(minutesAgo) mnt"
+    } else if now.timeIntervalSince(self) < 60 * 60 * 24 {
+      let hoursAgo = Int(now.timeIntervalSince(self) / (60 * 60))
+      return "\(hoursAgo) jam"
+    } else {
+      let daysAgo = calendar.dateComponents([.day], from: self, to: now).day ?? 0
+      return "\(daysAgo) hr"
+    }
+  }
+}

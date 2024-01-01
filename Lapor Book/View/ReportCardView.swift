@@ -54,18 +54,6 @@ struct ReportCard2View: View {
     ZStack {
       Color(hex: colorScheme == .light ? LB.AppColors.cardBgLight : LB.AppColors.cardBgDark)
       VStack(alignment: .leading, spacing: 0) {
-//        AsyncImage(url: URL(string: data?.imgPath ?? ""), content: { image in
-//          image
-//            .resizable()
-//            .aspectRatio(contentMode: .fill)
-//            .frame(height: UIScreen.main.bounds.height * 0.2)
-//            .clipped()
-//        }, placeholder: {
-//          ProgressView()
-//            .font(.title)
-//            .frame(height: UIScreen.main.bounds.height * 0.2)
-//            .frame(maxWidth: .infinity)
-//        })
         WebImage(url: URL(string: data?.imgPath ?? ""))
           .resizable()
           .placeholder(content: {
@@ -99,6 +87,7 @@ struct ReportCard2View: View {
             .foregroundStyle(colorScheme == .light ? .black : .white)
             .lineLimit(2)
             .font(.headline)
+            .multilineTextAlignment(.leading)
           Spacer()
           Text(data?.status ?? "")
             .font(.system(size: 14, weight: .bold, design: .default))
