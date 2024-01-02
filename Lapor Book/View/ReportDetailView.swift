@@ -47,25 +47,27 @@ struct ReportDetailView: View {
   
   var body: some View {
     List {
-      WebImage(url: URL(string: data?.imgPath ?? ""))
-        .resizable()
-        .placeholder(content: {
-          ProgressView()
-            .font(.title)
-            .frame(height: UIScreen.main.bounds.height * 0.3)
-            .frame(maxWidth: .infinity)
-        })
-        .onFailure(perform: { _ in
-          VStack(spacing: 16) {
-            Image(systemName: "wifi.slash")
-              .font(.largeTitle)
-            Text("Gagal mengunduh")
-          }
-        })
-        .scaledToFit()
-        .frame(height: UIScreen.main.bounds.height * 0.3)
-        .frame(maxWidth: .infinity)
+      NavigationLink(destination: ZoomableImageView(image: data?.imgPath ?? "")) {
+        WebImage(url: URL(string: data?.imgPath ?? ""))
+          .resizable()
+          .placeholder(content: {
+            ProgressView()
+              .font(.title)
+              .frame(height: UIScreen.main.bounds.height * 0.3)
+              .frame(maxWidth: .infinity)
+          })
+          .onFailure(perform: { _ in
+            VStack(spacing: 16) {
+              Image(systemName: "wifi.slash")
+                .font(.largeTitle)
+              Text("Gagal mengunduh")
+            }
+          })
+          .scaledToFit()
+          .frame(height: UIScreen.main.bounds.height * 0.3)
+          .frame(maxWidth: .infinity)
         .frame(alignment: .center)
+      }
       ReportDetailLabelView(data: data?.fullname ?? "", title: "Nama Pelapor", imageSystemName: "person.fill")
       ReportDetailLabelView(data: String(date: data?.date ?? Date(), format: "dd MMMM yyy"), title: "Tanggal Laporan", imageSystemName: "calendar")
       ReportDetailLabelView(data: data?.status ?? "", title: "Status Laporan", imageSystemName: "doc.fill")
@@ -86,16 +88,6 @@ struct ReportDetailView: View {
           Button("Ubah Status...") {
             self.changeStatusDialog.toggle()
           }
-          .sheet(isPresented: $addComentDetent, onDismiss: {
-            Task {
-              do {
-                viewModel.allComments = try await ReportManager.instance.loadAllComments(reportId: data?.id ?? "")
-              }
-            }
-          }, content: {
-            AddComentView(detent: $addComentDetent, reportId: data?.id ?? "")
-              .presentationDetents([.medium])
-          })
           .confirmationDialog("", isPresented: $changeStatusDialog) {
             Button("Posted") {
               Task {
@@ -175,6 +167,7 @@ struct ReportDetailView: View {
             Text("Tambah Komentar")
               .font(.system(size: 12, weight: .semibold))
           })
+          
         }
       }
       
@@ -193,6 +186,16 @@ struct ReportDetailView: View {
           print("Error getting user role:", error.localizedDescription)
         }
       }
+    })
+    .sheet(isPresented: $addComentDetent, onDismiss: {
+      Task {
+        do {
+          viewModel.allComments = try await ReportManager.instance.loadAllComments(reportId: data?.id ?? "")
+        }
+      }
+    }, content: {
+      AddComentView(detent: $addComentDetent, reportId: data?.id ?? "")
+        .presentationDetents([.medium])
     })
     .navigationTitle("Detail Laporan")
   }
