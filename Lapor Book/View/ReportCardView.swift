@@ -48,6 +48,7 @@ struct ReportCard1View: View {
 // MARK: - Report Card Design 2
 struct ReportCard2View: View {
   @Environment(\.colorScheme) var colorScheme
+  @State private var like = [LikeModel]()
   var data: ReportModel?
   
   var body: some View {
@@ -89,15 +90,27 @@ struct ReportCard2View: View {
             .font(.headline)
             .multilineTextAlignment(.leading)
           Spacer()
-          Text(data?.status ?? "")
-            .font(.system(size: 14, weight: .bold, design: .default))
-            .foregroundStyle(.accent)
+          HStack(spacing: 0) {
+            Text(data?.status ?? "")
+              .font(.system(size: 14, weight: .bold, design: .default))
+              .foregroundStyle(.accent)
+            Text(" (\(like.count) Like)")
+              .font(.system(size: 14, weight: .bold, design: .default))
+              .foregroundStyle(.accent)
+          }
           
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(8)
       }
     }
+    .onAppear(perform: {
+      Task {
+        do {
+          self.like = try await ReportManager.instance.loadAllLikes(reportId: data?.id ?? "")
+        }
+      }
+    })
     .frame(maxWidth: .infinity)
     .cornerRadius(10)
 //    .padding(.bottom, 0)

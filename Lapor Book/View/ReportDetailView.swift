@@ -15,7 +15,10 @@ final class ReportDetailViewModel: ObservableObject {
   @Published var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   @Published var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 1000, longitudinalMeters: 1000)
   @Published var comment: String = ""
+  @Published var isLiked: Bool = false
   @Published var allComments: [CommentModel] = []
+  @Published var allLikes: [LikeModel] = []
+  @Published var like: LikeModel? = LikeModel(date: Date(), author: "", id: "")
   
   func changeStatus(to newStatus: String, reportId: String) async throws {
     try await ReportManager.instance.changeStatus(to: newStatus, reportId: reportId)
@@ -33,6 +36,16 @@ final class ReportDetailViewModel: ObservableObject {
   
   func delReport(reportId: String) async throws {
     try await ReportManager.instance.deleteReport(reportId: reportId)
+  }
+  
+  func addLike(reportId: String) async throws {
+    let auth = try AuthManager.instance.getAuthUser()
+    let result = try await AuthManager.instance.getFSUser(user: auth)
+    try await ReportManager.instance.addLike(reportId: reportId, author: result.fullname ?? "")
+  }
+  
+  func delLike(reportId: String, likeId: String) async throws {
+    try await ReportManager.instance.delLike(reportId: reportId, likeId: likeId)
   }
 }
 
@@ -82,6 +95,35 @@ struct ReportDetailView: View {
           Text("Lokasi Laporan")
         }
       }
+      Button(action: {
+        if viewModel.isLiked {
+          Task {
+            do {
+              try await viewModel.delLike(reportId: data?.id ?? "", likeId: viewModel.like?.id ?? "")
+              viewModel.allLikes = try await ReportManager.instance.loadAllLikes(reportId: data?.id ?? "")
+              viewModel.like = ReportManager.instance.filterModel(by: data?.fullname ?? "", in: viewModel.allLikes)
+              viewModel.isLiked = false
+            }
+          }
+        } else {
+          Task {
+            do {
+              try await viewModel.addLike(reportId: data?.id ?? "")
+              viewModel.allLikes = try await ReportManager.instance.loadAllLikes(reportId: data?.id ?? "")
+              viewModel.like = ReportManager.instance.filterModel(by: data?.fullname ?? "", in: viewModel.allLikes)
+              viewModel.isLiked = true
+            }
+          }
+        }
+      }, label: {
+        HStack {
+          Image(systemName: viewModel.isLiked ? "heart.fill" : "heart")
+            .font(.title2)
+            .frame(width: 20)
+          Text("\(viewModel.allLikes.count) Like")
+        }
+      })
+      
       
       Section {
         if viewModel.user.role == "Admin" {
@@ -180,8 +222,11 @@ struct ReportDetailView: View {
       Task {
         do {
           viewModel.allComments = try await ReportManager.instance.loadAllComments(reportId: data?.id ?? "")
+          viewModel.allLikes = try await ReportManager.instance.loadAllLikes(reportId: data?.id ?? "")
           let auth = try AuthManager.instance.getAuthUser()
           viewModel.user = try await AuthManager.instance.getFSUser(user: auth)
+          viewModel.isLiked = ReportManager.instance.checkLike(array: viewModel.allLikes, query: viewModel.user.fullname ?? "")
+          viewModel.like = ReportManager.instance.filterModel(by: viewModel.user.fullname ?? "", in: viewModel.allLikes)
         } catch {
           print("Error getting user role:", error.localizedDescription)
         }

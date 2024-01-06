@@ -93,4 +93,44 @@ final class ReportManager {
   func deleteComment(reportId: String, commentId: String) async throws {
     try await Firestore.firestore().collection("report").document(reportId).collection("comments").document(commentId).delete()
   }
+  
+  func loadAllLikes(reportId: String) async throws -> [LikeModel] {
+    var tempArray = [LikeModel]()
+    let qs = try await Firestore.firestore().collection("report").document(reportId).collection("likes").getDocuments()
+    for like in qs.documents {
+      let timestamp = like["date"] as? Timestamp
+      let date = timestamp?.dateValue() as? Date
+      let id = like["id"] as? String
+      let author = like["author"] as? String
+      tempArray.append(LikeModel(date: date, author: author, id: id))
+    }
+    return tempArray
+  }
+  
+  func checkLike(array: [LikeModel], query: String) -> Bool {
+    return array.contains {
+      $0.author == query
+    }
+  }
+  
+  func filterModel(by author: String, in models: [LikeModel]) -> LikeModel? {
+    return models.first { $0.author == author }
+  }
+  
+  func addLike(reportId: String, author: String) async throws -> String {
+    let autoID = Firestore.firestore().collection("report").document(reportId).collection("likes").document().documentID
+    let data: [String: Any] = [
+      "date": Timestamp(),
+      "author": author,
+      "id": autoID
+    ]
+    
+    try await Firestore.firestore().collection("report").document(reportId).collection("likes").document(autoID).setData(data)
+    
+    return autoID
+  }
+  
+  func delLike(reportId: String, likeId: String) async throws {
+    try await Firestore.firestore().collection("report").document(reportId).collection("likes").document(likeId).delete()
+  }
 }
